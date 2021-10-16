@@ -3,13 +3,15 @@ package com.example.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.login.databinding.ActivityMainBinding;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //private ImageView ivAvatar;
     //private EditText nombre, apellido, mail, contraseña;
@@ -24,7 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
         asignarImagen();
         loadValues();
+        createListener();
     }
+
+    private void createListener() {
+    binding.botonSaludo.setOnClickListener(this::onClick);
+    }
+
     public void asignarImagen(){
 
         Picasso.get().load(URL).into(binding.ivAvatar);
@@ -45,4 +53,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(this,"Boton de Onclick",Toast.LENGTH_LONG).show();
+    }
 }
